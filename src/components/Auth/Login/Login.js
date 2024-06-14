@@ -1,5 +1,5 @@
 import React from "react";
-import vmLogo from '../../Assets/vodacom-logo.png'
+import vmLogo from "../../Assets/vodacom-logo.png";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -18,7 +18,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const onSubmit = (data, e) => {
     dispatch(setLoader());
     e.preventDefault();
@@ -47,7 +47,7 @@ const Login = () => {
         dispatch(UnsetLoader());
 
         if (e.response.data) {
-          window.alert(e.response.data.message)
+          window.alert(e.response.data.message);
         } else {
           window.alert("Something went wrong!");
         }
@@ -63,20 +63,20 @@ const Login = () => {
   const handleClicked = () => {
     navigate("/signup");
   };
-  
+
   return (
     <div className="login-container">
       <div className="login-form">
         <div className="logo-container">
-          <img className="login-logo" src={ vmLogo } alt="logo" />
+          <img className="login-logo" src={vmLogo} alt="logo" />
         </div>
 
         <div className="text">
           <h2>Queue Managemnet</h2>
           <p>Welcome back! Enter your account details</p>
         </div>
-        
-        <form onSubmit={handleSubmit(onSubmit)} >
+
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="radio-button">
             <div className="customer-radio">
               <label className="label-data" htmlFor="field-customer">
@@ -149,10 +149,16 @@ const Login = () => {
               <p className="alert-message">{errors.password?.message}</p>
             </div>
           </div>
-  
+
           <div style={{ marginTop: 16 }}>
             <p className="">
-              <span className="clickable" onClick={handleClick}>Forgot password?</span> or <span className="clickable" onClick={handleClicked}>Create an account</span>
+              <span className="clickable" onClick={handleClick}>
+                Forgot password?
+              </span>{" "}
+              or{" "}
+              <span className="clickable" onClick={handleClicked}>
+                Create an account
+              </span>
             </p>
 
             <button className="submit" type="submit">

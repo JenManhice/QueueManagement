@@ -75,21 +75,15 @@ const ListElement = (props) => {
   
   return (
     <div className={styles.listElement} style={style?{display:"none"}:{}}>
-        <h1 className={styles.head} style={{textAlign:"left", display:"inline"}}>{store._id!=='0'?store.name:"Name"}</h1>
-        <span style={{fontSize:"14px", marginLeft:"4px"}}>
+        <h1 className={styles.head} style={{textAlign:"left", display:"inline", float:"left"}}>{store._id!=='0'?store.name:"Name"}</h1>
+        <span style={{fontSize:"16px", marginLeft:"4px"}}>
             {/* {store.Address} */}
             {store._id!=='0'?((store.Address.length>20)?store.Address.substring(0,20)+"...":store.Address):"Address"}
         </span>
-        {/* <span style={{marginLeft:"180px"}}>
-          <TimerIcon fontSize='medium' style={{position:"relative",top:"6px", color:"#192839"}}/> 
-          <span className={styles.yellowCapsule2}>
-            1hr 25min 03sec
-          </span>
-        </span> */}
-        <button className={styles.leaveBtn} onClick={leave}>
+        <button className={styles.leaveBtn} style={{float:"right", marginRight:"50px", }}  onClick={leave}>
             Leave Queue
         </button>
-        <span style={{float:"right", marginRight:"20px"}}>Counter Alloted:{props.x.counter+1}</span>
+        <span style={{float: "left", position: 'relative', left: "50%"}}>Counter Alloted:{props.x.counter+1}</span>
 
     </div>
   )

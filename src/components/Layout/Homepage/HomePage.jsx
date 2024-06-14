@@ -85,7 +85,7 @@ const HomePage = () => {
         setSearchedTermForNearby={setSearchedTermForNearby}
       />
 
-      <div style={{ padding: 20, marginTop: 16 }}>
+      <div className={styles.homepageContainer}>
         <h1 className={styles.mainHead}>Nearby Stores</h1>
 
         <div className={styles.cards}>
@@ -95,9 +95,11 @@ const HomePage = () => {
             ""
           )}
           {filteredNearby.length !== 0 ? (
-            filteredNearby.map((n) => {
-              return <Card n={n.shop} />;
-            })
+            filteredNearby.map((n) => (
+              <div className={styles.cardWrapper} key={n.shop.id}>
+                <Card n={n.shop} />
+              </div>
+            ))
           ) : (
             <></>
           )}
@@ -105,16 +107,16 @@ const HomePage = () => {
 
         <h1 className={styles.mainHead}>Queues Joined</h1>
 
-        <div style={{ marginTop: 16 }}>
+        <div className={styles.elements} style={{ marginTop: 16 }}>
           {queues.length === 0 ? (
             <div className={styles.listElement}>Join some queues!!!</div>
           ) : (
             <></>
           )}
 
-          {state.map((x) => {
-            return <ListElement x={x} state={state} setState={setState} />;
-          })}
+          {state.map((x) => (
+            <ListElement key={x.id} x={x} state={state} setState={setState} />
+          ))}
         </div>
       </div>
     </>
