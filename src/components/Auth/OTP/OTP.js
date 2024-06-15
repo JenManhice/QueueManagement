@@ -122,9 +122,9 @@ const Otp = () => {
                         </p>
                 </form>
             </div>
-            <div className='queue-img'>
+            {/* <div className='queue-img'>
                 <img className="pic" src={image} alt="logo" />
-            </div>
+            </div> */}
         </div>
   </>
   )

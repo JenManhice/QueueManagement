@@ -137,7 +137,7 @@ const CreateStore = () => {
   return (
     <>
       <Navbar />
-      <div
+      <div className="main"
         style={{
           display: "flex",
           alignItems: "center",
@@ -396,31 +396,33 @@ const CreateStore = () => {
                 </tr>
               </tbody>
             </table>
+          </div>
 
-            <button
+          <button
               className={homeStyles.enterButton}
-              style={{ width: "40%", marginLeft: "30%", marginTop: "10px" }}
+              style={{ width: "40%", marginLeft: "20%", marginTop: "10px" }}
               onClick={() => navigate("/")}
             >
-              Join Queue
+              Other Stores
             </button>
             <p style={{ textAlign: "center", fontSize: "14px" }}>
-              Ensure to be physically near the store.
+              Join other stores' queues
             </p>
-          </div>
           <button
             className={homeStyles.enterButton}
             style={{
               width: "50%",
               marginLeft: "15%",
-              marginTop: "10px",
+              marginTop: "20px",
               backgroundColor: "#FF8898",
-              boxShadow: "0px 4px 15px #FF8898",
-              borderColor: "#FF8898",
+              // borderColor: "#FF8898",
             }}
           >
             Close Store
           </button>
+          <p style={{ textAlign: "center", fontSize: "14px" }}>
+              Delete Store
+            </p>
           <br />
           <br />
         </div>
