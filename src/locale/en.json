@@ -1,0 +1,156 @@
+{
+  "translation": {
+    "header_text": "Welcome back! Enter your account details",
+    "customer": "Customer",
+    "store": "Store",
+    "email_placeholder": "Enter email address",
+    "password_placeholder": "Enter password",
+    "forgot_password": "Forgot password?",
+    "create_account": "Create an account",
+    "login": "Login",
+    "queue_management": "Queue Management",
+    "alert_email_required": "Email is required",
+    "alert_email_invalid": "This is not a valid email",
+    "alert_password_required": "Password is required",
+    "alert_password_min_length": "Password must be more than 8 characters",
+    "alert_password_max_length": "Password cannot exceed more than 14 characters",
+    "alert_aopt_required": "This field is required",
+    "predictionLabel": "{{year}} Prediction",
+
+    "dayNames": {
+      "Sunday": "Sunday",
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday"
+    },
+
+    "signUp": {
+      "queue_management": "Queue Management",
+      "header_text": "Hate Never Ending Queues?",
+      "email_placeholder": "Enter Email Address",
+      "password_placeholder": "Enter New Password",
+      "confirm_password_placeholder": "Re-enter New Password",
+      "password_toggle": "Show password",
+      "forgot_password": "Forgot password?",
+      "existing_users": "Existing users?",
+      "login": "Login",
+      "create_account": "Sign Up Now",
+      "alert_email_required": "Email is required",
+      "alert_email_invalid": "This is not a valid email",
+      "alert_password_required": "Password is required",
+      "alert_password_min_length": "Password must be more than 8 characters",
+      "alert_password_max_length": "Password cannot exceed more than 14 characters",
+      "alert_password_match": "Passwords do not match"
+    },
+
+    "details": {
+      "header": "Tell us something about yourself!",
+      "select_role": "Select your Role",
+      "customer_role": "Customer",
+      "store_role": "Store",
+      "upload_profile_pic": "Upload a profile pic",
+      "fullname_placeholder": "Enter your full name",
+      "mobile_placeholder": "Mobile Number",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "submit": "Submit",
+      "alert_name_required": "Name is required",
+      "alert_mobile_required": "A Mozambican mobile number is required",
+      "alert_mobile_invalid": "This is not a valid mobile number",
+      "alert_aopt_required": "This field is required"
+    },
+
+    "OTP": {
+      "checkEmailMessage": "Check your email.",
+      "verifyEmailMessage": "Let us verify your email.",
+      "enterOTP": "Enter OTP",
+      "verifyButton": "Verify",
+      "didntReceive": "Didn't receive",
+      "resendOTP": "Resend OTP",
+      "timerFormat": "{{minutes}}:{{seconds}}",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password"
+    },
+
+    "forgot": {
+      "title": "Queue Management",
+      "instruction": "Enter your email!",
+      "email_placeholder": "Enter Email Address",
+      "send_otp": "Send OTP",
+      "alert_email_required": "Email is required",
+      "alert_email_invalid": "This is not a valid email"
+    },
+
+    "createstore": {
+      "editStoreDetails": "Edit Store Details",
+      "createStore": "Create Store",
+      "storeType": "Store type",
+      "generalStore": "General store",
+      "storeNamePlaceholder": "Store Name",
+      "counters": "Number of counters",
+      "getCoordinates": "Get coordinates",
+      "billingTimePlaceholder": "Billing Time",
+      "waitingTimeNote": "Waiting time will be calculated automatically.",
+      "from": "From",
+      "to": "To",
+      "aboutPlaceholder": "About",
+      "update": "Update",
+      "create": "Create",
+      "viewQueue": "View queue",
+      "viewStoreAnalytics": "View Store Analytics",
+      "storePreview": "Store Preview",
+      "otherStores": "Other Stores",
+      "joinQueue": "Join other stores' queues",
+      "closeStore": "Close Store",
+      "deleteStore": "Delete Store",
+      "address": "Address",
+      "defaultStoreName": "Store Name",
+      "defaultAboutText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat. Nam sagittis leo ut nibh vehicula, in venenatis velit laoreet."
+    },
+    "homepage": {
+      "nearby_stores": "Nearby Stores",
+      "queues_joined": "Queues Joined",
+      "show_nearby": "Show Nearby",
+      "join_some_queues": "Join some queues!!!"
+    },
+
+    "card": {
+      "counters": "Counters",
+      "customers": "Customers",
+      "waiting_time": "Waiting Time",
+      "join_queue": "Join Queue",
+      "leave_queue": "Leave Queue"
+    },
+
+    "storepage": {
+      "counters": "Counters",
+      "customers": "Customers",
+      "waiting_time": "Waiting time",
+      "billing_time": "Billing time",
+      "address": "Address",
+      "join_queue": "Join Queue",
+      "leave_queue": "Leave Queue",
+      "opening_hours": "Open",
+      "ensure_physical_presence": "Ensure to be physically near the store."
+    },
+
+    "searchbar": {
+      "search_placeholder": "Search for Stores, Bus Stops and More.....",
+      "filter_placeholder": "Apply filters...",
+      "sort_placeholder": "Sort By",
+      "search_label": "Search",
+      "filter_label": "Apply filters",
+      "sort_label": "Sort"
+    },
+    "listelements":{
+      "leaveQueue": "Leave Queue",
+      "counterAlloted": "Counter Alloted: {{counter}}",
+      "addressPlaceholder": "Address",
+      "namePlaceholder": "Name"
+    }
+  }
+}

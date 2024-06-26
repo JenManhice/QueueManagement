@@ -1,23 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import Navbar from '../Navbar/Navbar'
-import styles from "./store.module.css"
-import homeStyles from "../Homepage/Homepage.module.css"
-import img1 from "../../Assets/img1.png"
-import img2 from "../../Assets/img2.png"
-import img3 from "../../Assets/img3.png"
+import React, { useState, useEffect } from 'react';
+import Navbar from '../Navbar/Navbar';
+import styles from "./store.module.css";
+import homeStyles from "../Homepage/Homepage.module.css";
+import img1 from "../../Assets/img1.png";
+import img2 from "../../Assets/img2.png";
+import img3 from "../../Assets/img3.png";
 import TimerIcon from '@mui/icons-material/Timer';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { useLocation } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getSingle, joinQueue } from '../../../redux/actions/LayoutAction'
-import axios from 'axios'
-import Url from '../../../services/BaseUrl'
-import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions'
-import {sentEmail, leftQueue } from './../../../services/Email.js'
+import { useDispatch, useSelector } from 'react-redux';
+import { getSingle, joinQueue } from '../../../redux/actions/LayoutAction';
+import axios from 'axios';
+import Url from '../../../services/BaseUrl';
+import { setLoader, UnsetLoader } from '../../../redux/actions/LoaderActions';
+import { sentEmail } from './../../../services/Email.js';
+import { useTranslation } from 'react-i18next';
 
 const StorePage = () => {
-  const [ loc, setLoc ] = useState({
+  const { t } = useTranslation();
+  const [loc, setLoc] = useState({
     lat: 0,
     long: 0
   });
@@ -39,7 +40,7 @@ const StorePage = () => {
       })
   }, []);
 
-  let Details = useSelector((state) => state.LayoutReducer).single
+  let Details = useSelector((state) => state.LayoutReducer).single;
 
   function distance(lat1, lat2, lon1, lon2) {
     lon1 = lon1 * Math.PI / 180;
@@ -57,7 +58,7 @@ const StorePage = () => {
     let r = 6371;
 
     return (c * r);
-  }  
+  }
 
   let navigate = useNavigate();
 
@@ -69,11 +70,9 @@ const StorePage = () => {
         .then(() => {
           navigate("/")
           sentEmail()
-          // leftQueue()
         })
 
     } else {
-
       var today = new Date();
       var time = parseInt(parseInt(today.getHours()) * 60 + parseInt(today.getMinutes()));
       let userid = localStorage.getItem("userid")
@@ -94,7 +93,6 @@ const StorePage = () => {
           console.log(err);
         })
     }
-
   };
 
   let [arr, setArr] = useState([0])
@@ -115,7 +113,6 @@ const StorePage = () => {
     console.log(user, user.toString());
     setInQueue(false)
     for (let i = 0; i < Details.queue.length; i++) {
-
       if (Details.queue.length && Details.queue[i]._id === user.toString()) {
         setCounter(Details.queue[i].counter + 1)
         setInQueue(true)
@@ -141,7 +138,7 @@ const StorePage = () => {
         <tbody>
           <tr>
             <td className={styles.left}>
-              <h1 className={homeStyles.mainHead} style={{ margin: "0" }}>{Details.name ? Details.name : "Store Name"}</h1>
+              <h1 className={homeStyles.mainHead} style={{ margin: "0" }}>{Details.name ? Details.name : t("storepage.store_name")}</h1>
 
               <table>
                 <tbody>
@@ -149,7 +146,7 @@ const StorePage = () => {
                     <td style={{ padding: "10px" }}>
                       <div>
                         <img src={img1} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>{Details.counter}</div>
-                        <div style={{ textAlign: "center", width: "100%" }}>Counters</div>
+                        <div style={{ textAlign: "center", width: "100%" }}>{t("storepage.counters")}</div>
                       </div>
                     </td>
                     <td style={{ padding: "10px" }}>
@@ -157,7 +154,7 @@ const StorePage = () => {
                         <TimerIcon style={{ position: "relative", color: "#192839", fontSize: "38px", display: "inline-block", top: "6px" }} /><span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "6px", padding: "2px 5px" }}>
                           {arr[0] ? arr[0] : 0} min
                         </span>
-                        <div style={{ textAlign: "center", width: "100%" }}>Waiting time</div>
+                        <div style={{ textAlign: "center", width: "100%" }}>{t("storepage.waiting_time")}</div>
                       </div>
                     </td>
                   </tr>
@@ -165,7 +162,7 @@ const StorePage = () => {
                     <td style={{ padding: "10px" }}>
                       <div>
                         <img src={img2} alt="counters" className={homeStyles.icons} /><div className={homeStyles.roundNo}>{Details.queue.length}</div>
-                        <div style={{ textAlign: "center", width: "100%" }}>Customers</div>
+                        <div style={{ textAlign: "center", width: "100%" }}>{t("storepage.customers")}</div>
                       </div>
                     </td>
                     <td style={{ padding: "10px" }}>
@@ -173,22 +170,22 @@ const StorePage = () => {
                         <img src={img3} alt="counters" className={homeStyles.icons} /><span className={homeStyles.yellowCapsule} style={{ margin: "0", position: "relative", bottom: "10px", padding: "2px 5px" }}>
                           {bT} mins
                         </span>
-                        <div style={{ textAlign: "center", width: "100%" }}>Billing time</div>
+                        <div style={{ textAlign: "center", width: "100%" }}>{t("storepage.billing_time")}</div>
                       </div>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              
-              <AccessTimeIcon fontSize='large' style={{ position: "relative", top: "10px" }} /> Open {Details.from ? Details.from : 9}.00AM-{Details.to ? Details.to : 6}.00PM
+
+              <AccessTimeIcon fontSize='large' style={{ position: "relative", top: "10px" }} /> {t("storepage.opening_hours")} {Details.from ? Details.from : 9}.00AM-{Details.to ? Details.to : 6}.00PM
               <div>
 
                 <br></br>
                 {inQueue ? <div>
-                  <h1>Counter alloted:{counter}</h1>
+                  <h1>{t("storepage.counter_allotted")}: {counter}</h1>
                 </div> : <></>}
                 <br></br>
-                <h1>Address</h1>
+                <h1>{t("storepage.address")}</h1>
                 <p style={{ width: "90%" }}>{Details.Address ? Details.Address : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat.Nam sagittis leo "} </p>
               </div>
             </td>
@@ -202,9 +199,9 @@ const StorePage = () => {
       </table>
 
       <button className={inQueue ? homeStyles.leaveButton : homeStyles.enterButton} style={{ width: "20%", marginLeft: "40%", marginTop: "10px" }} onClick={() => join()}>
-        {inQueue ? "Leave Queue" : "Join Queue"}
+        {inQueue ? t("storepage.leave_queue") : t("storepage.join_queue")}
       </button>
-      <p style={{ textAlign: "center", fontSize: "14px" }}>Ensure to be physically near the store.</p>
+      <p style={{ textAlign: "center", fontSize: "14px" }}>{t("storepage.ensure_physical_presence")}</p>
     </>
   )
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./create.module.css";
 import StoreMallDirectoryIcon from "@mui/icons-material/StoreMallDirectory";
@@ -18,9 +18,13 @@ import {
 } from "../../../redux/actions/LayoutAction";
 import { setLoader, UnsetLoader } from "../../../redux/actions/LoaderActions";
 import { message } from "antd";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import en from "../../../locale/en.json"; // Import your language JSON files
+import pt from "../../../locale/pt.json";
 
 const CreateStore = () => {
-  let navigate = useNavigate();
+  const { t } = useTranslation(); // Initialize useTranslation hook
+  const navigate = useNavigate();
   const [strName, setStrName] = useState("");
   const [ctr, setCtr] = useState(0);
   const [billTime, setBillTime] = useState(0);
@@ -36,7 +40,7 @@ const CreateStore = () => {
   });
   const [storeDetails, setStoreDetails] = useState({});
 
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -51,7 +55,7 @@ const CreateStore = () => {
   }
 
   function showError(error) {
-    switch(error.code) {
+    switch (error.code) {
       case error.PERMISSION_DENIED:
         console.log("User denied the request for Geolocation.");
         break;
@@ -72,16 +76,6 @@ const CreateStore = () => {
   const funSub = () => {
     let counters = new Array(ctr).fill(0);
 
-    console.log(
-      strName,
-      parseInt(billTime),
-      parseInt(from),
-      parseInt(to),
-      parseInt(ctr),
-      loc.lat.toString(),
-      loc.long.toString(),
-      about
-    );
     dispatch(setLoader());
     dispatch(
       addStoreDetails(
@@ -97,11 +91,11 @@ const CreateStore = () => {
     )
       .then(() => {
         dispatch(UnsetLoader());
-        message.success("Store details updated successfully");
+        message.success(t("createstore.storeDetailsUpdated"));
       })
       .catch((error) => {
         dispatch(UnsetLoader());
-        message.error("Failed to update store details");
+        message.error(t("createstore.storeDetailsFailed"));
         console.error(error);
       });
   };
@@ -138,6 +132,7 @@ const CreateStore = () => {
     <>
       <Navbar />
       <div
+        className="main"
         style={{
           display: "flex",
           alignItems: "center",
@@ -145,14 +140,14 @@ const CreateStore = () => {
         }}
       >
         <div className={styles.box}>
-          <h1>{storeDetails.name ? "Edit Store Details" : "Create Store"}</h1>
+          <h1>{storeDetails.name ? t("createstore.editStoreDetails") : t("createstore.createStore")}</h1>
           <br />
           <StoreMallDirectoryIcon
             style={{ position: "relative", top: "10px" }}
             fontSize="large"
           />
           <input
-            placeholder="Store Name"
+            placeholder={t("createstore.storeNamePlaceholder")}
             value={strName}
             onChange={(e) => {
               setStrName(e.target.value);
@@ -172,8 +167,8 @@ const CreateStore = () => {
               fontSize: "16px",
             }}
           >
-            <option selected>Store type</option>
-            <option value="1">General store</option>
+            <option selected>{t("createstore.storeType")}</option>
+            <option value="1">{t("createstore.generalStore")}</option>
           </select>
           <br />
           <img
@@ -182,7 +177,7 @@ const CreateStore = () => {
             style={{ width: "7%", position: "relative", top: "10px" }}
           />
           <input
-            placeholder="Number of counters"
+            placeholder={t("createstore.counters")}
             value={ctr}
             onChange={(e) => {
               setCtr(e.target.value);
@@ -194,7 +189,7 @@ const CreateStore = () => {
             fontSize="large"
           />
           <button className={styles.coord} onClick={getLocation}>
-            Get coordinates
+            {t("createstore.getCoordinates")}
           </button>
           <p>
             {loc.lat},{loc.long}
@@ -206,7 +201,7 @@ const CreateStore = () => {
             style={{ width: "7%", position: "relative", top: "10px" }}
           />
           <input
-            placeholder="Billing Time"
+            placeholder={t("createstore.billingTimePlaceholder")}
             value={billTime}
             onChange={(e) => {
               setBillTime(e.target.value);
@@ -221,20 +216,20 @@ const CreateStore = () => {
               color: "gray",
             }}
           >
-            Waiting time will be calculated automatically.
+            {t("createstore.waitingTimeNote")}
           </p>
           <AccessTimeIcon
             style={{ position: "relative", top: "10px" }}
             fontSize="large"
           />
           <input
-            placeholder="From"
+            placeholder={t("createstore.from")}
             style={{ width: "39%" }}
             value={from}
             onChange={(e) => setFrom(e.target.value)}
           />
           <input
-            placeholder="To"
+            placeholder={t("createstore.to")}
             style={{ width: "39%" }}
             value={to}
             onChange={(e) => {
@@ -247,7 +242,7 @@ const CreateStore = () => {
             fontSize="large"
           />
           <textarea
-            placeholder="About"
+            placeholder={t("createstore.aboutPlaceholder")}
             value={about}
             onChange={(e) => {
               setAbout(e.target.value);
@@ -258,32 +253,32 @@ const CreateStore = () => {
             style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }}
             onClick={() => funSub()}
           >
-            {storeDetails.name ? "Update" : "Create"}
+            {storeDetails.name ? t("createstore.update") : t("createstore.create")}
           </button>
           <button
             className={homeStyles.enterButton}
             style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }}
             onClick={() => navigate("/view-queue/id")}
           >
-            View queue
+            {t("createstore.viewQueue")}
           </button>
           <button
             className={homeStyles.enterButton}
             style={{ width: "50%", marginLeft: "15%", marginTop: "10px" }}
             onClick={() => navigate("/chart")}
           >
-            View Store Analytics
+            {t("createstore.viewStoreAnalytics")}
           </button>
         </div>
         <div className={styles.box}>
-          <h1>Store Preview</h1>
+          <h1>{t("createstore.storePreview")}</h1>
           <div className={styles.mobile}>
             <table className={styles.table}>
               <tbody>
                 <tr>
                   <td className={styles.left}>
                     <h1 className={homeStyles.mainHead} style={{ margin: "0" }}>
-                      {strName !== "" ? strName : "Store Name"}
+                      {strName !== "" ? strName : t("createstore.defaultStoreName")}
                     </h1>
                     <table>
                       <tbody>
@@ -301,7 +296,7 @@ const CreateStore = () => {
                               <div
                                 style={{ textAlign: "center", width: "100%" }}
                               >
-                                Counters
+                                {t("createstore.counters")}
                               </div>
                             </div>
                           </td>
@@ -330,7 +325,7 @@ const CreateStore = () => {
                               <div
                                 style={{ textAlign: "center", width: "100%" }}
                               >
-                                Waiting time
+                                {t("createstore.billingTimePlaceholder")}
                               </div>
                             </div>
                           </td>
@@ -347,7 +342,7 @@ const CreateStore = () => {
                               <div
                                 style={{ textAlign: "center", width: "100%" }}
                               >
-                                Customers
+                                {t("createstore.customers")}
                               </div>
                             </div>
                           </td>
@@ -372,7 +367,7 @@ const CreateStore = () => {
                               <div
                                 style={{ textAlign: "center", width: "100%" }}
                               >
-                                Billing time
+                                {t("createstore.billingTimePlaceholder")}
                               </div>
                             </div>
                           </td>
@@ -383,44 +378,44 @@ const CreateStore = () => {
                       fontSize="large"
                       style={{ position: "relative", top: "10px" }}
                     />{" "}
-                    Open {from ? from : "9"}.00AM-{to ? to : "6"}.00PM
+                    {t("createstore.open")} {from ? from : "9"}.00AM-{to ? to : "6"}.00PM
                     <div>
-                      <h1>Address</h1>
+                      <h1>{t("createstore.address")}</h1>
                       <p style={{ width: "90%" }}>
-                        {about
-                          ? about
-                          : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat.Nam sagittis leo ut nibh vehicula, in venenatis velit laoreet. "}{" "}
+                        {about ? about : t("createstore.defaultAboutText")}
                       </p>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-
-            <button
-              className={homeStyles.enterButton}
-              style={{ width: "40%", marginLeft: "30%", marginTop: "10px" }}
-              onClick={() => navigate("/")}
-            >
-              Join Queue
-            </button>
-            <p style={{ textAlign: "center", fontSize: "14px" }}>
-              Ensure to be physically near the store.
-            </p>
           </div>
+
+          <button
+            className={homeStyles.enterButton}
+            style={{ width: "40%", marginLeft: "20%", marginTop: "10px" }}
+            onClick={() => navigate("/")}
+          >
+            {t("createstore.otherStores")}
+          </button>
+          <p style={{ textAlign: "center", fontSize: "14px" }}>
+            {t("createstore.joinQueue")}
+          </p>
           <button
             className={homeStyles.enterButton}
             style={{
               width: "50%",
               marginLeft: "15%",
-              marginTop: "10px",
+              marginTop: "20px",
               backgroundColor: "#FF8898",
-              boxShadow: "0px 4px 15px #FF8898",
-              borderColor: "#FF8898",
+              // borderColor: "#FF8898",
             }}
           >
-            Close Store
+            {t("createstore.closeStore")}
           </button>
+          <p style={{ textAlign: "center", fontSize: "14px" }}>
+            {t("createstore.deleteStore")}
+          </p>
           <br />
           <br />
         </div>

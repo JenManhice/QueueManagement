@@ -1,0 +1,156 @@
+{
+  "translation": {
+    "header_text": "Bem-vindo de volta! Insira os detalhes da sua conta",
+    "customer": "Cliente",
+    "store": "Loja",
+    "email_placeholder": "Digite o endereço de e-mail",
+    "password_placeholder": "Digite a senha",
+    "forgot_password": "Esqueceu a senha?",
+    "create_account": "Criar uma conta",
+    "login": "Entrar",
+    "queue_management": "Gestão de Filas",
+    "alert_email_required": "O e-mail é obrigatório",
+    "alert_email_invalid": "Este não é um e-mail válido",
+    "alert_password_required": "A senha é obrigatória",
+    "alert_password_min_length": "A senha deve ter mais de 8 caracteres",
+    "alert_password_max_length": "A senha não pode exceder 14 caracteres",
+    "alert_aopt_required": "Este campo é obrigatório",
+    "predictionLabel": "Previsão para {{year}}",
+
+    "dayNames": {
+      "Sunday": "Domingo",
+      "Monday": "Segunda-feira",
+      "Tuesday": "Terça-feira",
+      "Wednesday": "Quarta-feira",
+      "Thursday": "Quinta-feira",
+      "Friday": "Sexta-feira",
+      "Saturday": "Sábado"
+    },
+
+    "signUp": {
+      "queue_management": "Gestao de filas",
+      "header_text": "Odeia filas que nunca acabam?",
+      "email_placeholder": "Digite o endereço de e-mail",
+      "password_placeholder": "Digite a nova senha",
+      "confirm_password_placeholder": "Digite novamente a nova senha",
+      "password_toggle": "Mostrar senha",
+      "forgot_password": "Esqueceu a senha?",
+      "existing_users": "Usuários existentes? ",
+      "login": "Entrar",
+      "create_account": "Criar conta",
+      "alert_email_required": "O e-mail é obrigatório",
+      "alert_email_invalid": "Este não é um e-mail válido",
+      "alert_password_required": "A senha é obrigatória",
+      "alert_password_min_length": "A senha deve ter mais de 8 caracteres",
+      "alert_password_max_length": "A senha não pode exceder 14 caracteres",
+      "alert_password_match": "As senhas não coincidem"
+    },
+
+    "details": {
+      "header": "Conte-nos algo sobre você!",
+      "select_role": "Selecione seu papel",
+      "customer_role": "Cliente",
+      "store_role": "Loja",
+      "upload_profile_pic": "Envie uma foto de perfil",
+      "fullname_placeholder": "Digite seu nome completo",
+      "mobile_placeholder": "Número de Telefone",
+      "male": "Masculino",
+      "female": "Feminino",
+      "other": "Outro",
+      "submit": "Enviar",
+      "alert_name_required": "O nome é obrigatório",
+      "alert_mobile_required": "Um número de telefone moçambicano é obrigatório",
+      "alert_mobile_invalid": "Este não é um número de telefone válido"
+    },
+
+    "OTP": {
+      "checkEmailMessage": "Verifique seu email.",
+      "verifyEmailMessage": "Vamos verificar seu email.",
+      "enterOTP": "Digite o código de verificação",
+      "verifyButton": "Verificar",
+      "didntReceive": "Não recebeu",
+      "resendOTP": "Reenviar OTP",
+      "timerFormat": "{{minutes}}:{{seconds}}",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Senha"
+    },
+    "forgot": {
+      "title": "Gestão de Filas",
+      "instruction": "Digite seu e-mail!",
+      "email_placeholder": "Digite o endereço de e-mail",
+      "send_otp": "Enviar OTP",
+      "alert_email_required": "O e-mail é obrigatório",
+      "alert_email_invalid": "Este não é um e-mail válido"
+    },
+
+    "createstore": {
+      "editStoreDetails": "Editar Detalhes da Loja",
+      "createStore": "Criar Loja",
+      "storeType": "Tipo de loja",
+      "generalStore": "Loja geral",
+      "storeNamePlaceholder": "Nome da loja",
+      "counters": "Número de balcões",
+      "getCoordinates": "Obter coordenadas",
+      "billingTimePlaceholder": "Tempo de faturamento",
+      "waitingTimeNote": "O tempo de espera será calculado automaticamente.",
+      "from": "De",
+      "to": "Para",
+      "aboutPlaceholder": "Sobre",
+      "update": "Atualizar",
+      "create": "Criar",
+      "viewQueue": "Ver fila",
+      "viewStoreAnalytics": "Ver análise da loja",
+      "storePreview": "Visualização da Loja",
+      "otherStores": "Outras Lojas",
+      "joinQueue": "Junte-se às filas de outras lojas",
+      "closeStore": "Fechar Loja",
+      "deleteStore": "Excluir Loja",
+      "address": "Endereço",
+      "defaultStoreName": "Nome da Loja",
+      "defaultAboutText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur feugiat ex sed gravida. Proin eu orci varius, dictum erat ac, ullamcorper arcu. Aliquam erat volutpat. Nam sagittis leo ut nibh vehicula, in venenatis velit laoreet."
+    },
+
+    "homepage": {
+      "nearby_stores": "Lojas Próximas",
+      "queues_joined": "Filas Juntas",
+      "show_nearby": "Mostrar Próximos",
+      "join_some_queues": "Junte-se a algumas filas!!!"
+    },
+
+    "card": {
+      "counters": "Balcões",
+      "customers": "Clientes",
+      "waiting_time": "Tempo de Espera",
+      "join_queue": "Entrar na Fila",
+      "leave_queue": "Sair da Fila"
+    },
+
+    "storepage": {
+      "counters": "Balcões",
+      "customers": "Clientes",
+      "waiting_time": "Tempo de espera",
+      "billing_time": "Tempo de faturamento",
+      "address": "Endereço",
+      "join_queue": "Entrar na Fila",
+      "leave_queue": "Sair da Fila",
+      "opening_hours": "Aberto",
+      "ensure_physical_presence": "Certifique-se de estar fisicamente próximo à loja."
+    },
+
+    "searchbar": {
+      "search_placeholder": "Pesquisar lojas, pontos de ônibus e mais.....",
+      "filter_placeholder": "Aplicar filtros...",
+      "sort_placeholder": "Ordenar por",
+      "search_label": "Pesquisar",
+      "filter_label": "Aplicar filtros",
+      "sort_label": "Ordenar"
+    },
+    "listelements":{
+      "leaveQueue": "Sair da Fila",
+      "counterAlloted": "Balcão Alocado: {{counter}}",
+      "addressPlaceholder": "Endereço",
+      "namePlaceholder": "Nome"
+    }
+    
+  }
+}

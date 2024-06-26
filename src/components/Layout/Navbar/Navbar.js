@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import illustrate from "../../Assets/vodacom-logo.png";
 import "./Navbar.css";
 import { FaSignOutAlt, FaQrcode } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import englishFlag from "../../Assets/english-flag.png";
 import portugueseFlag from "../../Assets/portuguese-flag.png";
-import frenchFlag from "../../Assets/french-flag.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
   const [language, setLanguage] = useState("English");
 
   const signingOut = () => {
@@ -26,8 +27,19 @@ const Navbar = () => {
   };
 
   const changeLanguage = (lang) => {
-    setLanguage(lang);
-    // Add any additional logic for changing the language here
+    let selectedLanguage;
+    switch (lang) {
+      case "EN":
+        selectedLanguage = "English";
+        break;
+      case "PT":
+        selectedLanguage = "Portuguese";
+        break;
+      default:
+        selectedLanguage = "English";
+    }
+    setLanguage(selectedLanguage);
+    i18n.changeLanguage(lang.toLowerCase()); // Change language in i18n
   };
 
   return (
@@ -36,7 +48,6 @@ const Navbar = () => {
         <div className="logo-image">
           <img className="image" src={illustrate} alt="logo" />
         </div>
-
         <div className="logo-head">
           <p>Vodacom</p>
         </div>
@@ -63,8 +74,7 @@ const Navbar = () => {
                   language === "English"
                     ? englishFlag
                     : language === "Portuguese"
-                    ? portugueseFlag
-                    : frenchFlag
+                    ? portugueseFlag: englishFlag
                 }
                 alt={language}
                 className="flag"
@@ -78,9 +88,6 @@ const Navbar = () => {
               <div onClick={() => changeLanguage("PT")}>
                 <img src={portugueseFlag} alt="Portuguese" className="flag" />{" "}
                 Portuguese
-              </div>
-              <div onClick={() => changeLanguage("FR")}>
-                <img src={frenchFlag} alt="French" className="flag" /> French
               </div>
             </div>
           </div>
