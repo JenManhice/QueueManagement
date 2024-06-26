@@ -9,8 +9,10 @@ import { allQueues, getNearby } from "../../../redux/actions/LayoutAction";
 import { useSelector } from "react-redux/es/exports";
 import { setLoader, UnsetLoader } from "../../../redux/actions/LoaderActions";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const [loc, setLoc] = useState({
     lat: 0,
     long: 0,
@@ -86,11 +88,11 @@ const HomePage = () => {
       />
 
       <div className={styles.homepageContainer}>
-        <h1 className={styles.mainHead}>Nearby Stores</h1>
+        <h1 className={styles.mainHead}>{t("homepage.nearby_stores")}</h1>
 
         <div className={styles.cards}>
           {filteredNearby.length === 0 ? (
-            <button onClick={getLocation}>Show Nearby</button>
+            <button onClick={getLocation}>{t("homepage.show_nearby")}</button>
           ) : (
             ""
           )}
@@ -105,11 +107,11 @@ const HomePage = () => {
           )}
         </div>
 
-        <h1 className={styles.mainHead}>Queues Joined</h1>
+        <h1 className={styles.mainHead}>{t("homepage.queues_joined")}</h1>
 
         <div className={styles.elements} style={{ marginTop: 16 }}>
           {queues.length === 0 ? (
-            <div className={styles.listElement}>Join some queues!!!</div>
+            <div className={styles.listElement}>{t("homepage.join_some_queues")}</div>
           ) : (
             <></>
           )}

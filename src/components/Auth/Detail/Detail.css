@@ -2,27 +2,33 @@
     height: 31vh;
     width: 49vw;
 }
-.heading1{
+
+.heading1 {
     font-family: 'Source Sans Pro';
     color: #192839;
     font-size: 5em;
-    font-weight: 900; 
+    font-weight: 900;
 }
-.heading1 > span{
-    color: #41D3BD;
+
+.heading1 > span {
+    color: #E60000;
 }
-.heading2{
+
+.heading2 {
     font-family: 'Source Sans Pro';
     color: #192839;
     font-size: 2em;
-    font-weight: 900; 
+    font-weight: 900;
 }
-.photo1,.photo2{
+
+.photo1,
+.photo2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .images-role {
     display: flex;
     justify-content: space-between;
@@ -30,10 +36,12 @@
     width: 30vw;
     position: relative;
 }
-.photo1-role,.photo2-role{
+
+.photo1-role,
+.photo2-role {
     width: 10vw;
     height: 5vh;
-    background: #41D3BD;
+    background: #E60000;
     box-shadow: 0px 2.73786px 15px #C4C4C4;
     border-radius: 68.4466px;
     font-family: 'Source Sans Pro';
@@ -43,23 +51,35 @@
     display: grid;
     place-items: center;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
+
 .photo2-role {
-    background: #304D6D;
+    background: #E60005;
     position: absolute;
     top: 87%;
 }
-.photo2-role:hover{
-    background: #4a81b8;
+
+.photo2-role:hover {
+    background: #ffb2b2;
 }
-.photo1-role:hover{
-    background: #05a089;
+
+.photo1-role:hover {
+    background: #ffb2b2;
 }
-.photo2-img{
+
+.photo1.active .photo1-role,
+.photo2.active .photo2-role {
+    background: #ffb2b2; /* Change background color when active */
+}
+
+.photo2-img {
     position: absolute;
     top: 7%;
 }
-.first-portion, .second-portion {
+
+.first-portion,
+.second-portion {
     width: 50vw;
     height: 100vh;
     display: flex;
@@ -67,10 +87,12 @@
     position: relative;
     left: 3%;
 }
-.role{
+
+.role {
     margin-top: 3%;
 }
-.user-img{
+
+.user-img {
     width: 144px;
     height: 144px;
     border: 2px solid #192839;
@@ -79,20 +101,22 @@
     top: 3%;
     left: 11%;
 }
-.pic2{
+
+.pic2 {
     width: 140px;
     height: 140px;
     margin-top: 0%;
     border-radius: 12px;
 }
-.upload-img-btn{
+
+.upload-img-btn {
     position: absolute;
     top: 11%;
     left: 40%;
     width: 17vw;
     height: 6vh;
     cursor: pointer;
-    background: #304D6D;
+    background: #E60000;
     border-radius: 68.4466px;
     font-family: 'Source Sans Pro';
     font-weight: 400;
@@ -101,27 +125,30 @@
     border: 1px solid transparent;
     place-items: center;
     display: grid;
-
 }
-#plus{
+
+#plus {
     color: white;
     position: absolute;
     top: 20%;
     left: 8%;
     font-size: 22px;
 }
-.upload-img-btn > span{
+
+.upload-img-btn > span {
     width: fit-content;
     position: absolute;
     left: 21%;
 }
-.input-login-field{
+
+.input-login-field {
     position: absolute;
     top: 31%;
     height: 50vh;
     left: 11%;
 }
-.input-field2{
+
+.input-field2 {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
@@ -135,14 +162,17 @@
     position: relative;
     padding-right: 4%;
 }
-.mobile{
+
+.mobile {
     position: relative;
     top: 10%;
 }
-.fullname{
+
+.fullname {
     position: relative;
 }
-.radio-btns{
+
+.radio-btns {
     display: flex;
     justify-content: space-between;
     width: 29vw;
@@ -150,18 +180,23 @@
     top: 57%;
     left: 12%;
 }
-#field-male,#field-female,#field-other{
+
+#field-male,
+#field-female,
+#field-other {
     position: relative;
     left: -5%;
     cursor: pointer;
 }
-.label-data{
+
+.label-data {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 400;
     color: #2b4057f3;
     font-size: 1.4em;
 }
+
 .submit-btn {
     position: absolute;
     width: 22vw;
@@ -170,7 +205,7 @@
     top: 68%;
     border-radius: 100px;
     border: 1px solid transparent;
-    background-color: #41D3BD;
+    background-color: #E60000;
     font-family: 'Source Sans Pro';
     font-weight: 900;
     font-size: 1.6em;

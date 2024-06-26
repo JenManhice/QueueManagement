@@ -5,6 +5,7 @@
 
 }
 .bar,.line{
+    background-color: #c4c4c4;
     height: 50vh;
     width: 45vw;
 }
@@ -17,15 +18,13 @@
     top: 70%;
     left: 10%;
 }
-.bar > div > h3 > span{
-    color: #41D3BD;
+.bar > div > h3{
+    color: #E60005;
 }
-.line > div > h3 > span{
-    color: #41D3BD;
-}
+
 .line > div > h3{
     font-family: 'Source Sans Pro';
-    color: #192839;
+    color: #E60005;
     font-size: 3em;
     font-weight: 900;
     position: absolute  ;

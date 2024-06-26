@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import "./Detail.css";
 import Navbar from "../../Layout/Navbar/Navbar";
 import { useForm } from "react-hook-form";
@@ -10,8 +10,10 @@ import * as actionCreators from "../../../redux/actions/AuthAction";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../../services/API";
 import { setLoader, UnsetLoader } from "../../../redux/actions/LoaderActions";
+import { useTranslation } from "react-i18next";
 
 const Details = () => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -28,52 +30,49 @@ const Details = () => {
   const [fieldValue, setFieldValue] = useState(null);
   const [preview, setPreview] = useState(photo3);
   const fileRef = useRef(null);
+  const [activeRole, setActiveRole] = useState(null); // State to track active role
 
   const onSubmit = (data) => {
     if (role === null) {
-      alert("Choose your role");
-    return
+      alert(t("details.alert_role_required"));
+      return;
     }
 
     dispatch(setLoader());
 
     const obj = {
-        email: localStorage.getItem("email"),
-        password: pass,
-        fullname: data.fullname,
-        mobileno: data.mobile,
-        gender: data.aopt,
-        role: role === "store" ? false : true,
-      };
-      console.log(obj);
-
+      email: localStorage.getItem("email"),
+      password: pass,
+      fullname: data.fullname,
+      mobileno: data.mobile,
+      gender: data.aopt,
+      role: role === "store" ? false : true,
+    };
+    console.log(obj);
 
     dispatch(actionCreators.userName(data.fullname));
-    localStorage.setItem("fullname", data.fullname)
+    localStorage.setItem("fullname", data.fullname);
     dispatch(actionCreators.userMobile(data.mobile));
     dispatch(actionCreators.userGender(data.aopt));
     dispatch(actionCreators.userType(role));
     localStorage.setItem("Type", role);
-    
 
-
-    //after submit if role is store then navigate to another form else it navigate to home page
     AuthService.Details(obj)
-            .then((res) => {
-                dispatch(UnsetLoader());
-                localStorage.setItem("userid", res.data._id);
-                if (obj.role) {
-                    navigate("/");
-                    console.log(obj)
-                } else {
-                    navigate("/create-store");
-                    console.log(obj)
-                }
-            })
-            .catch((e) => {
-                dispatch(UnsetLoader());
-                console.log(e);
-            });
+      .then((res) => {
+        dispatch(UnsetLoader());
+        localStorage.setItem("userid", res.data._id);
+        if (obj.role) {
+          navigate("/create-store");
+          console.log(obj);
+        } else {
+          navigate("/login");
+          console.log(obj);
+        }
+      })
+      .catch((e) => {
+        dispatch(UnsetLoader());
+        console.log(e);
+      });
   };
 
   const imageHandler = (e) => {
@@ -87,38 +86,51 @@ const Details = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  if (role) {
-    console.log(role);
+  const handleRoleClick = (selectedRole) => {
+    setActiveRole(selectedRole);
+    setRole(selectedRole); // Set role state based on the clicked role
+    console.log("Selected role:", selectedRole);
   };
 
   return (
     <div className="Signup-Page">
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", paddingTop: 16, alignItems: "center" }}>
+      <Navbar />
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          paddingTop: 16,
+          alignItems: "center",
+        }}
+      >
         <div className="first-portion">
           <div className="detail-heading">
             <p className="heading1">
-              Tell us something about yourself <span className="ques">!</span>
+              {t("details.header")} <span className="ques">!</span>
             </p>
           </div>
           <div className="role">
-            <p className="heading2">Select your Role</p>
+            <p className="heading2">{t("details.select_role")}</p>
           </div>
           <div className="images-role">
-            <div className="photo1">
+            <div className={`photo1 ${activeRole === "customer" ? "active" : ""}`}>
               <div className="photo1-img">
                 <img className="pic1" src={photo1} alt="logo" />
               </div>
-              <div className="photo1-role" onClick={() => setRole("Customer")}>
-                Customer
+              <div
+                className="photo1-role"
+                onClick={() => handleRoleClick("customer")}
+              >
+                {t("details.customer_role")}
               </div>
             </div>
 
-            <div className="photo2">
+            <div className={`photo2 ${activeRole === "store" ? "active" : ""}`}>
               <div className="photo2-img">
                 <img className="pic1" src={photo2} alt="logo" />
               </div>
-              <div className="photo2-role" onClick={() => setRole("Store")}>
-                store
+              <div className="photo2-role" onClick={() => handleRoleClick("store")}>
+                {t("details.store_role")}
               </div>
             </div>
           </div>
@@ -143,8 +155,8 @@ const Details = () => {
                 }}
                 className="upload-img-btn"
               >
-                <i id="plus" class="fa fa-plus" aria-hidden="true"></i>{" "}
-                <span>Upload a profile pic</span>
+                <i id="plus" className="fa fa-plus" aria-hidden="true"></i>{" "}
+                <span>{t("details.upload_profile_pic")}</span>
               </button>
             </div>
           </div>
@@ -153,9 +165,9 @@ const Details = () => {
               <input
                 className="input-field2"
                 type="text"
-                placeholder="Enter your full name"
+                placeholder={t("details.fullname_placeholder")}
                 name="fullname"
-                {...register("fullname", { required: "Name is required" })}
+                {...register("fullname", { required: t("details.alert_name_required") })}
               ></input>
               <p className="alerts">{errors.fullname?.message}</p>
             </div>
@@ -163,13 +175,13 @@ const Details = () => {
               <input
                 className="input-field2"
                 type="text"
-                placeholder="Mobile Number"
+                placeholder={t("details.mobile_placeholder")}
                 name="mobile"
                 {...register("mobile", {
-                  required: "A mozambican mobile number is required",
+                  required: t("details.alert_mobile_required"),
                   pattern: {
                     value: /^[8][0-9]{8}$/i,
-                    message: "This is not a valid mobile number",
+                    message: t("details.alert_mobile_invalid"),
                   },
                 })}
               ></input>
@@ -180,43 +192,43 @@ const Details = () => {
             <div className="male-radio">
               <label className="label-data" htmlFor="field-male">
                 <input
-                  {...register("aopt", { required: "This field is required" })}
+                  {...register("aopt", { required: t("details.alert_aopt_required") })}
                   type="radio"
                   name="aopt"
                   value="male"
                   id="field-male"
                 />
-                Male
+                {t("details.male")}
               </label>
             </div>
             <div className="female-radio">
               <label className="label-data" htmlFor="field-female">
                 <input
-                  {...register("aopt", { required: "This field is required" })}
+                  {...register("aopt", { required: t("details.alert_aopt_required") })}
                   type="radio"
                   name="aopt"
                   value="female"
                   id="field-female"
                 />
-                Female
+                {t("details.female")}
               </label>
             </div>
             <div className="other-radio">
               <label className="label-data" htmlFor="field-other">
                 <input
-                  {...register("aopt", { required: "This field is required" })}
+                  {...register("aopt", { required: t("details.alert_aopt_required") })}
                   type="radio"
                   name="aopt"
                   value="other"
                   id="field-other"
                 />
-                Other
+                {t("details.other")}
               </label>
             </div>
             <p className="alerts">{errors.aopt?.message}</p>
           </div>
           <button className="submit-btn" type="submit">
-            Submit
+            {t("details.submit")}
           </button>
         </form>
       </div>

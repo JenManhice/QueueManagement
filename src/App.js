@@ -15,8 +15,10 @@ import Loader from './components/Layout/Loaders/GifLoader';
 import { useSelector } from 'react-redux';
 import Error404 from './components/Layout/Error404/Error404';
 import DemoLine from './components/Layout/Charts/Chart';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+
   let loader = useSelector(state=>state.LoaderReducer)
   useEffect(()=>{
     window.scrollTo(0,0)
